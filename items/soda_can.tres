@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_jh5g3")
-id = ""
-name = "Soda Can"
+id = "1"
+name = "Soda Can 1"
 texture = ExtResource("2_s5ehd")
 stackable = true
 max_stack = 5
