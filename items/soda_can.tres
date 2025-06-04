@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://bxft7bw3ae7ua"]
+
+[ext_resource type="Script" uid="uid://cvfc5grvnmjlg" path="res://ItemResource.gd" id="1_jh5g3"]
+[ext_resource type="Texture2D" uid="uid://fa25jjy0y738" path="res://assets/energy-blau.png" id="2_s5ehd"]
+
+[resource]
+script = ExtResource("1_jh5g3")
+id = ""
+name = "Soda Can"
+texture = ExtResource("2_s5ehd")
+stackable = true
+max_stack = 5
+rarity = "common"
+description = "Soda with extra caffine"
+metadata = {
+&"drinkable": true
+}
+metadata/_custom_type_script = "uid://cvfc5grvnmjlg"
