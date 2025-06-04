@@ -12,8 +12,12 @@ var tempItem2 = preload("res://items/soda_can2.tres")
 func _ready() -> void:
 	add_item(tempItem)
 	add_item(tempItem2)
+	add_item(tempItem)
 	for slot in inventoryContainer.size():
 		print(inventoryContainer[slot])
+	
+	for i in 10:
+		add_item(tempItem)
 	pass # Replace with function body.
 
 
@@ -28,8 +32,10 @@ func add_item(item: Resource) -> bool: # -> bool means you're going to return a 
 	#Check if the item exists and is stackable
 	for slot in inventoryContainer:
 
-		if slot["item"].id == item.id and slot["item"].stackable:
-			slot["item"].count += 1
+		if slot["item"].id == item.id and slot["item"].stackable and slot["count"] <  item.max_stack: #This compares id's, check to see if the bool is true for the attribute stackable, and finally is stopped if max_stack is met
+			slot["count"] += 1
+			print("Line 39 | ID:", slot["item"].id, "| Name:", slot["item"].name, "| Count:", slot["count"])
+
 			return true
 	
 	#Otherwise, place in a new slot
@@ -49,3 +55,6 @@ func remove_item(item: Resource) -> bool:
 func is_full() -> bool:
 	return inventoryContainer.size() >= inventoryMaxSize #Apparently you can use an if statement on the return line and return if it's true or not.
 	# So if the inventory is full or over the MaxSize then return true to whatever called add_item
+
+func is_stackable() -> bool:
+	return inventoryContainer[0]
