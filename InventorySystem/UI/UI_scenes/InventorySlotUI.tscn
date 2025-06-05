@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcqthkelv3ola"]
+[gd_scene load_steps=5 format=3 uid="uid://dcqthkelv3ola"]
 
 [ext_resource type="Texture2D" uid="uid://donpgwnjyd61e" path="res://InventorySystem/UI/UI_assets/blackbox_slot.png" id="1_qpgno"]
 [ext_resource type="Texture2D" uid="uid://fa25jjy0y738" path="res://assets/energy-blau.png" id="2_hjcgb"]
+[ext_resource type="Script" uid="uid://smlt1jin1udq" path="res://InventorySystem/UI/UI_scripts/InventorySlotUI.gd" id="2_jrmx3"]
 [ext_resource type="FontFile" uid="uid://56mgjk0bc0ch" path="res://InventorySystem/UI/UI_assets/fonts/m6x11plus.ttf" id="3_jrmx3"]
 
 [node name="SlotBackground1" type="TextureRect"]
 texture = ExtResource("1_qpgno")
+script = ExtResource("2_jrmx3")
 
 [node name="ItemIcon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -22,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hjcgb")
 
-[node name="Label" type="Label" parent="."]
+[node name="StackAmount" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
