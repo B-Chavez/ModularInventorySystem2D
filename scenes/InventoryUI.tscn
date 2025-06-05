@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://2e5uwew24h2y"]
+
+[ext_resource type="Texture2D" uid="uid://ckjfmlucbbgs4" path="res://InventorySystem/UI/UI_assets/inventoryTextureBackground.png" id="1_ju2k0"]
+[ext_resource type="PackedScene" uid="uid://dcqthkelv3ola" path="res://InventorySystem/UI/UI_scenes/InventorySlotUI.tscn" id="2_l5txx"]
+
+[node name="InventoryUi" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryBackground" type="TextureRect" parent="CanvasLayer"]
+offset_right = 557.0
+offset_bottom = 409.0
+texture = ExtResource("1_ju2k0")
+
+[node name="InventoryGrid" type="GridContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="SlotBackground1" parent="CanvasLayer/InventoryGrid" instance=ExtResource("2_l5txx")]
+layout_mode = 2
