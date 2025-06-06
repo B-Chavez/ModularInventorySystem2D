@@ -3,9 +3,13 @@ class_name InventoryMaster
 
 var inventoryContainer: Array = [] #Stores each item in here
 @export var inventoryMaxSize: int = 10 #Inventory maximum size, note this is not a constant, so if you wanna change it go ahead. It might break the UI though if you go to high
+@onready var inventory_ui = get_node("../InventoryUI") #Load this variable when InventoryUI instance is available and be able to drag in a node to this
+@onready var grid = $InventoryGrid #Assigns InventoryGrid node to this
 
 var tempItem = preload("res://items/soda_can.tres")
 var tempItem2 = preload("res://items/soda_can2.tres")
+
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,26 +17,12 @@ func _ready() -> void:
 	add_item(tempItem)
 	add_item(tempItem2)
 	add_item(tempItem)
-	for slot in inventoryContainer.size():
-		print(inventoryContainer[slot])
 	
-	for i in 50:
-		add_item(tempItem)
-	pass # Replace with function body.
-
-	remove_item(3, 3) #passing in two arguements so we can determine the location you're trying to remove the item from, and how many you want to remove
-	print("Line 24 | Amount of filled slots in inventory: ", inventoryContainer.size())
-	for slot in inventoryContainer.size():
-		print("Line 26 | Slot ", slot, " ",inventoryContainer[slot].item.name, " Quantity in this slot: ", inventoryContainer[slot].count)
-	print("Line 27 | ", inventoryContainer[3])	
+	print(grid)
+	print(typeof(grid))
 	
-	add_item(tempItem)
-	print("Line 30 | ",inventoryContainer[3])
-	
-	add_item(tempItem2)
-	for slot in inventoryContainer.size():
-		print("Line 34 | Slot ", slot, " ",inventoryContainer[slot].item.name, " Quantity in this slot: ", inventoryContainer[slot].count)
-		
+	inventory_ui.populate_inventory(inventoryContainer)
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
