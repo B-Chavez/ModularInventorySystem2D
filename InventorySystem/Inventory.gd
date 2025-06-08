@@ -1,10 +1,10 @@
 extends Node
 class_name InventoryMaster
 
+@export var inventory_ui: Node #Set in inspector
+
 var inventoryContainer: Array = [] #Stores each item in here
 @export var inventoryMaxSize: int = 10 #Inventory maximum size, note this is not a constant, so if you wanna change it go ahead. It might break the UI though if you go to high
-@onready var inventory_ui = get_node("../InventoryUI") #Load this variable when InventoryUI instance is available and be able to drag in a node to this
-@onready var grid = $InventoryGrid #Assigns InventoryGrid node to this
 
 var tempItem = preload("res://items/soda_can.tres")
 var tempItem2 = preload("res://items/soda_can2.tres")
@@ -14,15 +14,25 @@ var tempItem2 = preload("res://items/soda_can2.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_item(tempItem)
-	add_item(tempItem2)
-	add_item(tempItem)
+	await get_tree().process_frame #Let the scene tree finish building
 	
-	print(grid)
-	print(typeof(grid))
 	
-	inventory_ui.populate_inventory(inventoryContainer)
-	pass
+	if inventory_ui == null:
+		push_error("inventory_ui is null!")
+		return
+	
+	print("Inventory.gd ready() has started")
+	print("inventory_ui =", inventory_ui)
+	
+	if not inventory_ui.has_signal("ready_to_populate"):
+		push_error("inventory_ui has no ready_to_populate signal!")
+		return
+	
+	inventory_ui.ready_to_populate.connect(Callable(self, "_on_inventory_ui_ready"))
+	print("Manually calling _on_inventory_ui_ready() for debug...")
+	_on_inventory_ui_ready()
+	print("Signal list on inventory_ui: ", inventory_ui.get_signal_list())
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -44,9 +54,11 @@ func add_item(item: Resource) -> bool: # -> bool means you're going to return a 
 	
 	#if there's nothing in the array or it's under the inventoryMaxSize then append a new instance of InventorySlot
 	if inventoryContainer.size() < inventoryMaxSize:
-		inventoryContainer.append(
-			InventorySlot.new()
-		)
+		var new_slot = InventorySlot.new()
+		new_slot.item = item
+		new_slot.count = 1
+		inventoryContainer.append(new_slot)
+		return true
 	
 	#Find the InventorySlot that was just appended above here and change the default count to 1
 	for slot in inventoryContainer:
@@ -94,3 +106,15 @@ func is_stackable(item: Resource) -> bool:
 		elif slot.item.stackable: #if the variable, stackable, that's in the resource item is true return true
 			return true
 	return false #return false if the item you're placing in the inventory cannot be stacked because the max_stack has been met or was exceeded
+	
+func _on_inventory_ui_ready() -> void:
+		print("_on_inventory_ui_ready started")
+		
+		print("inventory_ui has populate_inventory()?", inventory_ui.has_method("populate_inventory"))
+		
+		add_item(tempItem)
+		add_item(tempItem2)
+		add_item(tempItem)
+		
+		print("Calling inventory_ui.populate_inventory(inventoryContainer)")
+		inventory_ui.populate_inventory(inventoryContainer)

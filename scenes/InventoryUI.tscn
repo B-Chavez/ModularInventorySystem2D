@@ -6,6 +6,7 @@
 
 [node name="InventoryUI" type="CanvasLayer"]
 script = ExtResource("1_l5txx")
+slot_scene = ExtResource("2_l5txx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,6 +19,3 @@ texture = ExtResource("1_ju2k0")
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 4
-
-[node name="SlotUI" parent="CanvasLayer/InventoryGrid" instance=ExtResource("2_l5txx")]
-layout_mode = 2
