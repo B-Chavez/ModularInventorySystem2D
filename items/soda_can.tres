@@ -15,4 +15,5 @@ description = "Soda with extra caffine"
 metadata = {
 &"drinkable": true
 }
+color_tint = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://cvfc5grvnmjlg"

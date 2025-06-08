@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://d3w7wng51gpaw"]
+
+[ext_resource type="Script" uid="uid://cvfc5grvnmjlg" path="res://ItemResource.gd" id="1_rxkjd"]
+[ext_resource type="Texture2D" uid="uid://fa25jjy0y738" path="res://assets/energy-blau.png" id="2_dow38"]
+
+[resource]
+script = ExtResource("1_rxkjd")
+id = 4
+name = "Cherry Soda"
+texture = ExtResource("2_dow38")
+stackable = true
+max_stack = 10
+rarity = "rare"
+description = "A fizzy cherry soda"
+metadata = {
+&"drinkable": true
+}
+color_tint = Color(1, 0.229414, 0.175326, 1)
+metadata/_custom_type_script = "uid://cvfc5grvnmjlg"
