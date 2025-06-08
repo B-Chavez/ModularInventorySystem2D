@@ -15,5 +15,8 @@ description = "Soda with extra caffine"
 metadata = {
 &"drinkable": true
 }
+<<<<<<< HEAD
 color_tint = Color(0.877022, 0.793392, 0.907429, 1)
+=======
+>>>>>>> parent of fb5ce10 (Added a function to add test items)
 metadata/_custom_type_script = "uid://cvfc5grvnmjlg"

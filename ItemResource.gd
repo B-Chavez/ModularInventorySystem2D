@@ -9,7 +9,6 @@ class_name ItemResource
 @export var rarity: String = "common"
 @export var description: String = ""
 @export var metadata: Dictionary = {}
-@export var color_tint: Color = Color(1, 1, 1)
 
 
 

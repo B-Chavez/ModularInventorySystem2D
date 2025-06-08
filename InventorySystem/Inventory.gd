@@ -8,8 +8,7 @@ var inventoryContainer: Array = [] #Stores each item in here
 
 var tempItem = preload("res://items/soda_can.tres")
 var tempItem2 = preload("res://items/soda_can2.tres")
-var tempItem3 = preload("res://items/soda_can3.tres")
-var tempItem4 = preload("res://items/soda_can_cherry.tres")
+
 
 
 
@@ -110,11 +109,16 @@ func is_stackable(item: Resource) -> bool:
 	
 func _on_inventory_ui_ready() -> void:
 		print("_on_inventory_ui_ready started")
-		add_test_items()
+		
 		print("inventory_ui has populate_inventory()?", inventory_ui.has_method("populate_inventory"))
+		
+		add_item(tempItem)
+		add_item(tempItem2)
+		add_item(tempItem)
 		
 		print("Calling inventory_ui.populate_inventory(inventoryContainer)")
 		inventory_ui.populate_inventory(inventoryContainer)
+<<<<<<< HEAD
 
 
 func add_test_items():
@@ -137,3 +141,5 @@ func add_test_items():
 		add_item(item)
 		
 	inventory_ui.populate_inventory(inventoryContainer)
+=======
+>>>>>>> parent of fb5ce10 (Added a function to add test items)
