@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_jh5g3")
 id = 1
-name = "Soda Can 1"
+name = "Rockstar Blue"
 texture = ExtResource("2_s5ehd")
 stackable = true
 max_stack = 5
@@ -15,5 +15,5 @@ description = "Soda with extra caffine"
 metadata = {
 &"drinkable": true
 }
-color_tint = Color(0, 1, 0, 1)
+color_tint = Color(0.877022, 0.793392, 0.907429, 1)
 metadata/_custom_type_script = "uid://cvfc5grvnmjlg"

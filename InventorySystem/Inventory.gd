@@ -128,11 +128,12 @@ func add_test_items():
 		tempItem2,
 		tempItem,
 		tempItem2,
+		tempItem,
 		tempItem
 	]
 	
-	for i in 10:
-		for item in test_items:
-			add_item(item)
+	#for i in 10:
+	for item in test_items:
+		add_item(item)
 		
 	inventory_ui.populate_inventory(inventoryContainer)
